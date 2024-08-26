@@ -9,6 +9,8 @@ router.post('/register',userController.registerController)
 router.post('/login',userController.loginController)
 //add book
 router.post('/add-book',bookController.addBookController)
+//delete book
+router.delete('/remove-book/:bookId',bookController.removeBookController)
 //get all books
 router.get('/allbooks',bookController.allBookController)
 //save book

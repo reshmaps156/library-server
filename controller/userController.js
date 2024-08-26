@@ -10,7 +10,7 @@ exports.registerController = async(req,res)=>{
             res.status(406).json('Account already exist')
         }else{
             const newUser = new users({
-                username,age,email,password,access
+                username,age,email,password,    
             })
             await newUser.save()
             res.status(200).json(newUser)
