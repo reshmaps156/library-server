@@ -89,8 +89,6 @@ exports.savedBookController = async (req, res) => {
     }
 };
 
-
-
 exports.getSavedBookController = async (req, res) => {
     const userId = req.params.userId
 
@@ -200,7 +198,6 @@ exports.rejectReservedBook = async (req, res) => {
     }
 };
 
-
 exports.borrowBooks = async (req, res) => {
     const { userId, bookId, username, bookName, author, issueDate } = req.body;
 
@@ -250,7 +247,6 @@ exports.getAcceptedReservations = async (req, res) => {
 };
 
 
-
 exports.getUserBorrowedBooks = async (req, res) => {
     const { userId } = req.params;
 
@@ -284,3 +280,17 @@ exports.returnBook = async (req, res) => {
     }
 };
 
+exports.editBookController = async(req,res)=>{
+    const {bookId}=req.params
+    const { bookname, author, bookImg, category, availabilty,status } = req.body
+    try {
+      const editedBook =  await books.findByIdAndUpdate(bookId,{bookname,author,bookImg,category,availabilty,status}) 
+      await editedBook.save()
+      res.status(200).json(editedBook)
+    } catch (error) {
+        res.status(401).json(error)
+    }
+    
+    
+
+}

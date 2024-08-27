@@ -34,6 +34,9 @@ router.get('/user-borrowed-books/:userId', bookController.getUserBorrowedBooks);
 
 router.delete('/return-book/:id', bookController.returnBook);
 
+//edit book
+router.put('/edit-book/:bookId',bookController.editBookController)
+
 module.exports = router
 
 
