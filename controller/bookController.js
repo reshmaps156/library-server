@@ -32,8 +32,15 @@ exports.removeBookController = async(req,res)=>{
     }
 }
 exports.allBookController = async (req, res) => {
-    let allBook = await books.find()
+    const searchKey = req.query.search
+    
+    
+   
     try {
+        const query = {
+            bookname:{$regex:searchKey,$options:'i'}
+        }
+        let allBook = await books.find(query)
         if (allBook) {
             res.status(200).json(allBook)
         } else {
